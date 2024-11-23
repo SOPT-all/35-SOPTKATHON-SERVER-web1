@@ -1,4 +1,4 @@
-package com.andsopt.sopkaton.common.dto;
+package com.andsopt.sopkaton.api.common.dto;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

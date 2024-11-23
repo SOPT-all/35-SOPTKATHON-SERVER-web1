@@ -1,4 +1,4 @@
-package com.andsopt.sopkaton.common.enums;
+package com.andsopt.sopkaton.api.common.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

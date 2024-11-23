@@ -1,6 +1,6 @@
-package com.andsopt.sopkaton.common.exception;
+package com.andsopt.sopkaton.api.common.exception;
 
-import com.andsopt.sopkaton.common.dto.APIErrorResponse;
+import com.andsopt.sopkaton.api.common.dto.APIErrorResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
