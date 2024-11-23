@@ -16,7 +16,7 @@ public class Fortune {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id", columnDefinition = "bigint", nullable = false)
+    @Column(columnDefinition = "varchar(10)", nullable = false)
     private String name;
 
     @Column(columnDefinition = "varchar(10)", nullable = false)
