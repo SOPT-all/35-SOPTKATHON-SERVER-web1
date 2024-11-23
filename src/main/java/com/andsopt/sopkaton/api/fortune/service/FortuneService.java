@@ -307,10 +307,9 @@ public class FortuneService {
     }
 
     private Calender getBirthCalender(final boolean isLunar, final String birthYear, final String birthMonth, final String birthDay) {
-        if (isLunar) {
+        if (!isLunar) {
             return calenderRepository.findByBirthYearAndBirthMonthAndBirthDay(birthYear, birthMonth, birthDay);
         }
-
         return calenderRepository.findByLunarYearAndLunarMonthAndLunarDay(birthYear, birthMonth, birthDay);
     }
 
