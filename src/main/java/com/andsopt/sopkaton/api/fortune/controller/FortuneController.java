@@ -33,4 +33,12 @@ public class FortuneController {
         );
         return APISuccessResponse.of(HttpStatus.OK, fortuneResponse);
     }
+
+    @GetMapping("/{fortuneId}")
+    ResponseEntity<APISuccessResponse<FortuneResponse>> getFortune(
+            @PathVariable(name = "fortuneId") final Long fortuneId
+    ) {
+
+        return APISuccessResponse.of(HttpStatus.OK, fortuneService.getFortune(fortuneId));
+    }
 }
