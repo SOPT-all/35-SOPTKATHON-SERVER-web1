@@ -16,37 +16,37 @@ public class Fortune {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String name;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String todayDate;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String lastDate;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String cardName;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String mainCardImageUrl;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String subCardImageUrl;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String cardContent;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String moneyContent;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String cautionContent;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String notableContent;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
+    @Column(columnDefinition = "text", nullable = false)
     private String totalContent;
 
     @Builder
