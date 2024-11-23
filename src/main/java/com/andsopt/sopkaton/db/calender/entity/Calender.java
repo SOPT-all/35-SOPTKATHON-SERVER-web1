@@ -10,19 +10,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "calender")
 public class Calender {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", columnDefinition = "bigint", nullable = false)
     private Long id;
 
-    @Column(name = "year", columnDefinition = "varchar(10)", nullable = false)
-    private String year;
+    @Column(name = "birthYear", columnDefinition = "varchar(10)", nullable = false)
+    private String birthYear;
 
-    @Column(name = "month", columnDefinition = "varchar(10)", nullable = false)
-    private String month;
+    @Column(name = "birthMonth", columnDefinition = "varchar(10)", nullable = false)
+    private String birthMonth;
 
-    @Column(name = "day", columnDefinition = "varchar(10)", nullable = false)
-    private String day;
+    @Column(name = "birthDay", columnDefinition = "varchar(10)", nullable = false)
+    private String birthDay;
 
     @Column(name = "lunar_year", columnDefinition = "varchar(10)", nullable = false)
     private String lunarYear;
@@ -48,8 +49,8 @@ public class Calender {
     @Column(name = "ganji_day_han", columnDefinition = "varchar(10)", nullable = false)
     private String ganjiDayHan;
 
-    @Column(name = "ganji_day_ho", columnDefinition = "varchar(10)", nullable = false)
-    private String ganjiDayHo;
+    @Column(name = "ganji_day_ko", columnDefinition = "varchar(10)", nullable = false)
+    private String ganjiDayKo;
 
 
 }

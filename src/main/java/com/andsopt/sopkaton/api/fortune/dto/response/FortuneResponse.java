@@ -1,10 +1,20 @@
 package com.andsopt.sopkaton.api.fortune.dto.response;
 
-public record FortuneResponse(
-        String response
-) {
+import lombok.Builder;
 
-    public static FortuneResponse of(final String response) {
-        return new FortuneResponse(response);
-    }
+@Builder
+public record FortuneResponse(
+        String name,
+        String todayDate,
+        String lastDate,
+        String cardName,
+        String mainCardImageUrl,
+        String subCardImageUrl,
+        String cardContent,
+        String moneyContent,
+        String cautionContent,
+        String notableContent,
+        String totalContent
+
+) {
 }
