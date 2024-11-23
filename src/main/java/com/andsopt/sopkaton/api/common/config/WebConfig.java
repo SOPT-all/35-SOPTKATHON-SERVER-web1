@@ -1,4 +1,4 @@
-package com.andsopt.sopkaton.common.config;
+package com.andsopt.sopkaton.api.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
