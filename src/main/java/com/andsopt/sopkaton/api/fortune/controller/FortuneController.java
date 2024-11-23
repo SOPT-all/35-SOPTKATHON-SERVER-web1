@@ -21,6 +21,16 @@ public class FortuneController {
             @RequestBody final FortuneRequest fortuneRequest
     ) {
 
-        return APISuccessResponse.of(HttpStatus.OK, fortuneService.createFortune(fortuneRequest.role(), fortuneRequest.content()));
+        final FortuneResponse fortuneResponse = fortuneService.createFortune(
+                fortuneRequest.name(),
+                fortuneRequest.birth(),
+                fortuneRequest.isLunar(),
+                fortuneRequest.period(),
+                fortuneRequest.gender(),
+                fortuneRequest.today(),
+                fortuneRequest.tomorrow(),
+                fortuneRequest.afterTomorrow()
+        );
+        return APISuccessResponse.of(HttpStatus.OK, fortuneResponse);
     }
 }
