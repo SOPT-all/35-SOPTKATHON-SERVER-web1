@@ -1,5 +1,7 @@
 package com.andsopt.sopkaton.api.fortune.service;
 
+import com.andsopt.sopkaton.api.common.enums.ErrorStatus;
+import com.andsopt.sopkaton.api.common.exception.NotFoundException;
 import com.andsopt.sopkaton.api.enums.Gender;
 import com.andsopt.sopkaton.api.fortune.dto.response.AnthropicResponse;
 import com.andsopt.sopkaton.api.fortune.dto.response.FortuneResponse;
@@ -7,6 +9,8 @@ import com.andsopt.sopkaton.db.calender.entity.Calender;
 import com.andsopt.sopkaton.db.calender.repository.CalenderRepository;
 import com.andsopt.sopkaton.db.card.entity.Card;
 import com.andsopt.sopkaton.db.card.repository.CardRepository;
+import com.andsopt.sopkaton.db.fortune.entity.Fortune;
+import com.andsopt.sopkaton.db.fortune.repository.FortuneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -14,6 +18,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -40,6 +45,9 @@ public class FortuneService {
 
     private final CardRepository cardRepository;
 
+    private final FortuneRepository fortuneRepository;
+
+    @Transactional
     public FortuneResponse createFortune(final String name, final String birth, final boolean isLunar, final String period, final Gender gender, final String today, final String tomorrow, final String afterTomorrow) {
 
         StringTokenizer tokenizer = new StringTokenizer(birth, ".");
@@ -101,7 +109,24 @@ public class FortuneService {
             extractedContents.add(content.trim());
         }
 
+        final Fortune fortune = Fortune.builder()
+                .name(name)
+                .todayDate(today)
+                .lastDate(afterTomorrow)
+                .cardName(findCard.getName())
+                .mainCardImageUrl(findCard.getMainImageUrl())
+                .subCardImageUrl(findCard.getSubImageUrl())
+                .cardContent(extractedContents.get(0))
+                .moneyContent(extractedContents.get(1))
+                .cautionContent(extractedContents.get(2))
+                .notableContent(extractedContents.get(3))
+                .totalContent(extractedContents.get(4))
+                .build();
+
+        fortuneRepository.save(fortune);
+
         return FortuneResponse.builder()
+                .fortuneId(fortune.getId())
                 .name(name)
                 .todayDate(today)
                 .lastDate(afterTomorrow)
@@ -287,5 +312,27 @@ public class FortuneService {
         }
 
         return calenderRepository.findByLunarYearAndLunarMonthAndLunarDay(birthYear, birthMonth, birthDay);
+    }
+
+    @Transactional(readOnly = true)
+    public FortuneResponse getFortune(final Long fortuneId) {
+        final Fortune findFortune = fortuneRepository.findById(fortuneId).orElseThrow(
+                () -> new NotFoundException(ErrorStatus.TEST)
+        );
+
+        return FortuneResponse.builder()
+                .fortuneId(findFortune.getId())
+                .name(findFortune.getName())
+                .todayDate(findFortune.getTodayDate())
+                .lastDate(findFortune.getLastDate())
+                .cardName(findFortune.getCardName())
+                .mainCardImageUrl(findFortune.getMainCardImageUrl())
+                .subCardImageUrl(findFortune.getSubCardImageUrl())
+                .cardContent(findFortune.getCardContent())
+                .moneyContent(findFortune.getMoneyContent())
+                .cautionContent(findFortune.getCautionContent())
+                .notableContent(findFortune.getNotableContent())
+                .totalContent(findFortune.getTotalContent())
+                .build();
     }
 }

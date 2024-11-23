@@ -4,6 +4,7 @@ import lombok.Builder;
 
 @Builder
 public record FortuneResponse(
+        Long fortuneId,
         String name,
         String todayDate,
         String lastDate,
