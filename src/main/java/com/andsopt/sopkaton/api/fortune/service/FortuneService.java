@@ -52,27 +52,27 @@ public class FortuneService {
 
         StringTokenizer tokenizer = new StringTokenizer(birth, ".");
 
-        String birthYear = tokenizer.nextToken();
-        String birthMonth = tokenizer.nextToken();
-        String birthDay = tokenizer.nextToken();
+        String birthYear = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
+        String birthMonth = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
+        String birthDay = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
 
         tokenizer = new StringTokenizer(today, ".");
 
-        String todayYear = tokenizer.nextToken();
-        String todayMonth = tokenizer.nextToken();
-        String todayDay = tokenizer.nextToken();
+        String todayYear = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
+        String todayMonth = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
+        String todayDay = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
 
         tokenizer = new StringTokenizer(tomorrow, ".");
 
-        String tomorrowYear = tokenizer.nextToken();
-        String tomorrowMonth = tokenizer.nextToken();
-        String tomorrowDay = tokenizer.nextToken();
+        String tomorrowYear = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
+        String tomorrowMonth = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
+        String tomorrowDay = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
 
         tokenizer = new StringTokenizer(afterTomorrow, ".");
 
-        String afterTomorrowYear = tokenizer.nextToken();
-        String afterTomorrowMonth = tokenizer.nextToken();
-        String afterTomorrowDay = tokenizer.nextToken();
+        String afterTomorrowYear = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
+        String afterTomorrowMonth = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
+        String afterTomorrowDay = String.valueOf(Integer.parseInt(tokenizer.nextToken()));
 
         final Calender birthCalender = getBirthCalender(isLunar, birthYear, birthMonth, birthDay);
         final Calender todayCalender = calenderRepository.findByBirthYearAndBirthMonthAndBirthDay(todayYear, todayMonth, todayDay);
