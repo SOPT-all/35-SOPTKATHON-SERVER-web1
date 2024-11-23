@@ -18,6 +18,9 @@ public class Time {
     @Column(name = "period", columnDefinition = "varchar(25)", nullable = false)
     private String period;
 
-    @Column(name = "ganji_time", columnDefinition = "varchar(25)", nullable = false)
-    private String ganjiTime;
+    @Column(name = "ganji_time_han", columnDefinition = "varchar(25)", nullable = false)
+    private String ganjiTimeHan;
+
+    @Column(name = "ganji_time_ko", columnDefinition = "varchar(25)", nullable = false)
+    private String ganjiTimeKo;
 }
